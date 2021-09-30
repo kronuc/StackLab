@@ -108,6 +108,7 @@ namespace StackLab.Stack
             {
                 StackAction = StackActions.Clear
             };
+            Count = 0;
             StackChangedEvent?.Invoke(this, eventArgs);
         }
 
@@ -141,6 +142,12 @@ namespace StackLab.Stack
                 Carpasity = Count;
                 _stackHead.Previous = null;
             }
+            StackChagedEventArgs<T> eventArgs = new StackChagedEventArgs<T>()
+            {
+                StackAction = StackActions.TrimExcess
+            };
+            StackChangedEvent?.Invoke(this, eventArgs);
+
         }
 
         public bool TryPeek(out T result)
