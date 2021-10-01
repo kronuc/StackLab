@@ -16,6 +16,8 @@ namespace StackLab
             TrimExcessDemonstration();
             ClearDemonstration();
             StackEventsDemonstration();
+            PopFromEmptyStackDemonstration();
+            PeekFromEmptyStackDemonstration();
         }
 
         static void ConstructorWithArrayDemonstration() 
@@ -222,6 +224,48 @@ namespace StackLab
             stack.TrimExcess();
             stack.Clear();
             
+        }
+
+        static void PopFromEmptyStackDemonstration()
+        {
+            Console.WriteLine("\n Pop from empty stack demonstration\n");
+
+            Console.WriteLine("\n1) Create stack withoutdata");
+            MyStack<string> stack = new MyStack<string>();
+            Console.WriteLine($"\ncount of items in stack: {stack.Count}");
+
+            Console.WriteLine("\n2) Execute \"pop\" method on ");
+            try
+            {
+                string popedItem = stack.Pop();
+            }
+            catch (StackNoElementException e)
+            {
+                Console.WriteLine("exception message: " + e.Message);
+            }
+            
+        }
+
+        static void PeekFromEmptyStackDemonstration()
+        {
+            Console.WriteLine("\n Peek on empty stack demonstration\n");
+
+            Console.WriteLine("\n1) Create stack with start data");
+            MyStack<string> stack = new MyStack<string>();
+            
+            Console.WriteLine($"\n count of items in stack: {stack.Count}");
+
+            Console.WriteLine("\n2) Execute \"peek\" method on stack");
+            try
+            {
+                string peekedItem = stack.Peek();
+            }
+            catch (StackNoElementException e)
+            {
+                Console.WriteLine("exception message: " + e.Message);
+            }
+
+           
         }
 
         static void StackEventHandler(object sender, StackChagedEventArgs<string> args)

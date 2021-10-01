@@ -82,12 +82,16 @@ namespace StackLab.Stack
         private T Pop(bool doNotification)
         {
             T result = default;
-            if (_stackHead != null)
+            if (Count != 0)
             {
                 result = _stackHead.Value;
                 _stackHead.Value = default;
                 _stackHead = _stackHead.Next;
                 Count--;
+            }
+            else
+            {
+                throw new StackNoElementException("can`t pop element from empty stack");
             }
             if (doNotification)
             {
@@ -119,9 +123,13 @@ namespace StackLab.Stack
         private T Peek(bool doNotification)
         {
             T result = default;
-            if (_stackHead != null)
+            if (Count != 0)
             {
                 result = _stackHead.Value;
+            }
+            else
+            {
+                throw new StackNoElementException("can`t peek element from empty stack");
             }
             if (doNotification)
             {
