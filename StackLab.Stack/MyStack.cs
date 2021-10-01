@@ -55,7 +55,6 @@ namespace StackLab.Stack
             if (_stackHead == null || _stackHead.Previous == null)
             {
                 _stackHead = new StackNode<T>(value, _stackHead);
-                Carpasity++;
             }
             else
             {
@@ -63,6 +62,7 @@ namespace StackLab.Stack
                 _stackHead.Value = value;
             }
             Count++;
+            if (Count > Carpasity) Carpasity = Count;
             if (doNotification)
             {
                 StackChagedEventArgs<T> eventArgs = new StackChagedEventArgs<T>()

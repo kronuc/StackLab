@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackLab", "StackLab\StackLab.csproj", "{F379027F-D577-4D7B-B4DB-3D8223C0F82D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackLab", "StackLab\StackLab.csproj", "{F379027F-D577-4D7B-B4DB-3D8223C0F82D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackLab.Stack", "StackLab.Stack\StackLab.Stack.csproj", "{B7C11EC7-E394-46BC-BAB8-F77843C919AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackLab.Stack", "StackLab.Stack\StackLab.Stack.csproj", "{B7C11EC7-E394-46BC-BAB8-F77843C919AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackLab.Stack.Tests", "StackLab.Stack.Tests\StackLab.Stack.Tests.csproj", "{B3C0633E-1056-4FAB-B645-BB4390470E21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B7C11EC7-E394-46BC-BAB8-F77843C919AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C11EC7-E394-46BC-BAB8-F77843C919AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C11EC7-E394-46BC-BAB8-F77843C919AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C0633E-1056-4FAB-B645-BB4390470E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C0633E-1056-4FAB-B645-BB4390470E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C0633E-1056-4FAB-B645-BB4390470E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C0633E-1056-4FAB-B645-BB4390470E21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
