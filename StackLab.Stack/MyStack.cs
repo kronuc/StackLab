@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +32,7 @@ namespace StackLab.Stack
         public void CopyTo(Array array, int index)
         {
             StackNode<T> current = _stackHead;
-            for( int i = 0; i < index || i < Count; i++)
+            for( int i = 0; i < index && i < Count; i++)
             {
                 array.SetValue(current.Value, i);
                 current = current.Next;
@@ -113,6 +113,7 @@ namespace StackLab.Stack
                 StackAction = StackActions.Clear
             };
             Count = 0;
+            Carpasity = 0;
             StackChangedEvent?.Invoke(this, eventArgs);
         }
 
@@ -145,7 +146,7 @@ namespace StackLab.Stack
 
         public void TrimExcess()
         {
-            if (Count/Carpasity < 0.9)
+            if (Count < Carpasity)
             {
                 Carpasity = Count;
                 _stackHead.Previous = null;
