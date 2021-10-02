@@ -488,6 +488,113 @@ namespace StackLab.Stack.Tests
             Assert.AreEqual(expected, resutl, message: "lenght of array created by ToArray method are not equal to count of elements in stack");
 
         }
-    
+
+        [Test]
+        [TestCase(new int[] { 1, 3 })]
+        [TestCase(new int[] { 1, 2, 3, 4 })]
+        public void CopyTo_CopyStackFullStackToArray_FirstelementOfResultArrayEqualToLastStackElement(int[] items)
+        {
+            MyStack<int> stack = new MyStack<int>(items);
+            int expected = stack.Peek();
+            int[] ourArray = new int[stack.Count];
+
+            stack.CopyTo(ourArray, 1);
+            int result = ourArray[0];
+
+            Assert.AreEqual(expected, result, message: "element of array that were gotten from method CopyTo is wrong");
+        }
+
+        [Test]
+        public void StackChangedEvent_ExecutePush_EventFiredWithEventArgPush()
+        {
+            MyStack<int> stack = new MyStack<int>();
+            StackActions expected = StackActions.Push;
+            StackActions result = StackActions.Clear;
+            stack.StackChangedEvent += (o, e) => { result = e.StackAction; };
+
+            stack.Push(5);
+
+            Assert.AreEqual(expected, result, message: "event called with wrong parameter StackAction in eventArgs");
+        }
+
+        [Test]
+        public void StackChangedEvent_ExecutePop_EventFiredWithEventArgPop()
+        {
+            MyStack<int> stack = new MyStack<int>(new int[] { 2, 3, 4 });
+            StackActions expected = StackActions.Pop;
+            StackActions result = StackActions.Clear;
+            stack.StackChangedEvent += (o, e) => { result = e.StackAction; };
+
+            stack.Pop();
+
+            Assert.AreEqual(expected, result, message: "event called with wrong parameter StackAction in eventArgs");
+        }
+        
+        [Test]
+        public void StackChangedEvent_ExecutePeek_EventFiredWithEventArgPeek()
+        {
+            MyStack<int> stack = new MyStack<int>(new int[] { 1, 2, 3 });
+            StackActions expected = StackActions.Peek;
+            StackActions result = StackActions.Clear;
+            stack.StackChangedEvent += (o, e) => { result = e.StackAction; };
+
+            stack.Peek();
+
+            Assert.AreEqual(expected, result, message: "event called with wrong parameter StackAction in eventArgs");
+        }
+
+        [Test]
+        public void StackChangedEvent_ExecuteClear_EventFiredWithEventArgClear()
+        {
+            MyStack<int> stack = new MyStack<int>();
+            StackActions expected = StackActions.Clear;
+            StackActions result = StackActions.Peek;
+            stack.StackChangedEvent += (o, e) => { result = e.StackAction; };
+
+            stack.Clear();
+
+            Assert.AreEqual(expected, result, message: "event called with wrong parameter StackAction in eventArgs");
+        }
+
+        [Test]
+        public void StackChangedEvent_ExecuteTryPeek_EventFiredWithEventArgTryPeek()
+        {
+            MyStack<int> stack = new MyStack<int>(new int[] { 1, 3, 4, 4});
+            StackActions expected = StackActions.TryPeek;
+            StackActions result = StackActions.Clear;
+            stack.StackChangedEvent += (o, e) => { result = e.StackAction; };
+
+            int ourVar;
+            stack.TryPeek(out ourVar);
+
+            Assert.AreEqual(expected, result, message: "event called with wrong parameter StackAction in eventArgs");
+        }
+
+        [Test]
+        public void StackChangedEvent_ExecuteTryPop_EventFiredWithEventArgTryPop()
+        {
+            MyStack<int> stack = new MyStack<int>(new int[] { 1, 4, 6 });
+            StackActions expected = StackActions.TryPop;
+            StackActions result = StackActions.Clear;
+            stack.StackChangedEvent += (o, e) => { result = e.StackAction; };
+
+            int ourVar;
+            stack.TryPop(out ourVar);
+
+            Assert.AreEqual(expected, result, message: "event called with wrong parameter StackAction in eventArgs");
+        }
+
+        [Test]
+        public void StackChangedEvent_ExecuteTrimExcess_EventFiredWithEventArgTrimExcess()
+        {
+            MyStack<int> stack = new MyStack<int>();
+            StackActions expected = StackActions.TrimExcess;
+            StackActions result = StackActions.Clear;
+            stack.StackChangedEvent += (o, e) => { result = e.StackAction; };
+
+            stack.TrimExcess();
+
+            Assert.AreEqual(expected, result, message: "event called with wrong parameter StackAction in eventArgs");
+        }
     }
 }
